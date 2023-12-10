@@ -1,0 +1,9 @@
+FROM node:21-alpine3.17
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+ENV DOCTORS_SERVICES_URL=http://127.0.0.1:9090
+ENV APPOINTMENTS_SERVICE_URL=http://127.0.0.1:7070
+EXPOSE 3030
+CMD ["node","app.js"]

@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  appointments:
+    image: ahmadaamir/project-microservice-appointments:latest
+    expose:
+      - "7070"
+    networks:
+      - frontend_network
+
+  doctors:
+    image: ahmadaamir/project-microservice-doctors:latest
+    expose:
+      - "9090"
+    networks:
+      - frontend_network
+
+  frontend:
+    image: ahmadaamir/project-microservice-frontend:latest
+    ports:
+      - "3000:3000"
+    environment:
+      DOCTORS_SERVICE_URL: doctors:9090
+      APPOINTMENTS_SERVICE_URL: appointments:7070
+    depends_on:
+      - appointments
+      - doctors
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
+    driver: bridge
