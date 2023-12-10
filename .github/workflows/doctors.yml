@@ -1,0 +1,50 @@
+name: Doctors Microservice CI/CD
+
+on:
+  pull_request:
+    paths:
+      - 'doctors/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'doctors/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy-doctors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set Git user information
+        run: |
+          git config --global user.email "i200702@nu.edu.pk"
+          git config --global user.name "amaamir124"
+
+      - name: Build and push Docker image for Doctors
+        uses: docker/build-push-action@v2
+        with:
+          context: ./doctors
+          push: true
+          tags: |
+            ahmadaamir/project-microservice-doctors:${{ github.sha }}
+
+      - name: Update docker-compose file for Doctors
+        run: |
+          git pull
+          sed -i "s|ahmadaamir/project-microservice-doctors:[^ ]*|ahmadaamir/project-microservice-doctors:${{ github.sha }}|" docker-compose.yml
+
+          git add docker-compose.yml
+          git commit -m "Update doctors microservice image tag to ${{ github.sha }}"
+          git push
