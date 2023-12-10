@@ -17,7 +17,7 @@ services:
       - frontend_network
 
   frontend:
-    image: ahmadaamir/project-microservice-frontend:${{ github.sha }}
+    image: ahmadaamir/project-microservice-frontend:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 github.sha }}
     ports:
       - "3000:3000"
     environment:
