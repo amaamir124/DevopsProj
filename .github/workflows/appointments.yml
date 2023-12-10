@@ -38,12 +38,12 @@ jobs:
           context: ./appointments
           push: true
           tags: |
-            amaamir124/project-microservice-appointments:${{ github.sha }}   
+            ahmadaamir/project-microservice-appointments:${{ github.sha }}   
 
       - name: Update docker-compose file for Appointments
         run: |
           git pull
-          sed -i "s|amaamir124/project-microservice-appointments:[^ ]*|amaamir124/project-microservice-appointments:${{ github.sha }}|" docker-compose.yml
+          sed -i "s|ahmadaamir/project-microservice-appointments:[^ ]*|ahmadaamir/project-microservice-appointments:${{ github.sha }}|" docker-compose.yml
 
           git add docker-compose.yml
           git commit -m "Update appointments microservice image tag to ${{ github.sha }}"
