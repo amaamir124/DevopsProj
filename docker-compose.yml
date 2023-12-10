@@ -3,7 +3,7 @@ version: '3'
 services:
 
   appointments:
-    image: ahmadaamir/project-microservice-appointments:feaf32ae518bb0aaf887945a1a086e3588d00f39 github.sha }}
+    image: ahmadaamir/project-microservice-appointments:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 github.sha }}
     expose:
       - "7070"
     networks:
