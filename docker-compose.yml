@@ -10,7 +10,7 @@ services:
       - frontend_network
 
   doctors:
-    image: ahmadaamir/project-microservice-doctors:feaf32ae518bb0aaf887945a1a086e3588d00f39 github.sha }}
+    image: ahmadaamir/project-microservice-doctors:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 github.sha }}
     expose:
       - "9090"
     networks:
