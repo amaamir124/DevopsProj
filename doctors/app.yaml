@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctors-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: doctors
+  template:
+    metadata:
+      labels:
+        app: doctors
+    spec:
+      containers:
+      - name: doctors
+        image: ahmadaamir/project-microservice-doctors:latest
+        ports:
+        - containerPort: 9090
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: doctors-service
+spec:
+  selector:
+    app: doctors
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090

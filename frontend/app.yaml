@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: ahmadaamir/project-microservice-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DOCTORS_SERVICE_URL
+          value: "doctors-service:9090"  # Update with the correct service name
+        - name: APPOINTMENTS_SERVICE_URL
+          value: "appointments-service:7070"  # Update with the correct service name
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30195
+  type: NodePort

@@ -3,21 +3,21 @@ version: '3'
 services:
 
   appointments:
-    image: ahmadaamir/project-microservice-appointments:latest
+    image: amaamir124/project-microservice-appointments:${{ github.sha }}
     expose:
       - "7070"
     networks:
       - frontend_network
 
   doctors:
-    image: ahmadaamir/project-microservice-doctors:latest
+    image: amaamir124/project-microservice-doctors:${{ github.sha }}
     expose:
       - "9090"
     networks:
       - frontend_network
 
   frontend:
-    image: ahmadaamir/project-microservice-frontend:latest
+    image: amaamir124/project-microservice-frontend:${{ github.sha }}
     ports:
       - "3000:3000"
     environment:

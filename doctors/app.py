@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
+@app.route('/healthz')
+def healthz():
+    return 'OK'
+
 doctors = [
   { 'id': "1",'firstName': "Muhammad Ali", 'lastName': "Kahoot", 'speciality':"DevOps"  },
   { 'id': "2",'firstName': "Good", 'lastName': "Doctor",'speciality':"Test"  }
