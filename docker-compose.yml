@@ -3,21 +3,21 @@ version: '3'
 services:
 
   appointments:
-    image: ahmadaamir/project-microservice-appointments:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 github.sha }}
+    image: ahmadaamir/project-microservice-appointments:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 
     expose:
       - "7070"
     networks:
       - frontend_network
 
   doctors:
-    image: ahmadaamir/project-microservice-doctors:2855217dd84395a580218641fed5b10fb1bd780d github.sha }}
+    image: ahmadaamir/project-microservice-doctors:2855217dd84395a580218641fed5b10fb1bd780d 
     expose:
       - "9090"
     networks:
       - frontend_network
 
   frontend:
-    image: ahmadaamir/project-microservice-frontend:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 github.sha }}
+    image: ahmadaamir/project-microservice-frontend:74835cc047cdf64f149bb7ed96b5b32ea45d72d5 
     ports:
       - "3000:3000"
     environment:
