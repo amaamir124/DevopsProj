@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: doctors
-        image: ahmadaamir/project-microservice-doctors:latest
+        image: ahmadaamir/project-microservice-doctors:2855217dd84395a580218641fed5b10fb1bd780d
         ports:
         - containerPort: 9090
         resources:
@@ -24,7 +24,18 @@ spec:
           requests:
             memory: "128Mi"
             cpu: "100m"
-        
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 9090
+          initialDelaySeconds: 10
+          periodSeconds: 15
 ---
 apiVersion: v1
 kind: Service

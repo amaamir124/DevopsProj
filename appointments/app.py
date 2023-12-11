@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
-@app.route('/healthz')
+@app.route('/healthz', methods=["GET"])
 def healthz():
-    return 'OK'
+    return jsonify({'status': 'OK'}), 200
+  
+
 
 appointments = [
   { 'id': "1",'doctor': "1", 'date': "21 Nov 2023", 'rating':"Good"  },
