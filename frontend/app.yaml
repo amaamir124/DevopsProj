@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ahmadaamir/project-microservice-frontend:db380bcc085f74bf4ea8b3161760ca3974c5e35d
+        image: ahmadaamir/project-microservice-frontend:0020174a95b0e7677e3134f4459a1216a5f87c8f
         ports:
         - containerPort: 3000
         env:
