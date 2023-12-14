@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: appointments
-        image: ahmadaamir/project-microservice-appointments:74835cc047cdf64f149bb7ed96b5b32ea45d72d5
+        image: ahmadaamir/project-microservice-appointments:db380bcc085f74bf4ea8b3161760ca3974c5e35d
         ports:
         - containerPort: 7070
         resources:

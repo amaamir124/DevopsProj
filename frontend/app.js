@@ -6,13 +6,15 @@ const axios = require('axios');
 const PORT = 3000;
 const HOST = '0.0.0.0';
 
+// Create Express app
+const app = express();
+
+
 app.get('/healthz',(req,res)=> {
   res.send ('OK');
 });
 
 
-// Create Express app
-const app = express();
 
 // Serve static files
 app.use(express.static('public'));
