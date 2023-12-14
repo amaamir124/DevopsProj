@@ -17,7 +17,7 @@ services:
       - frontend_network
 
   frontend:
-    image: ahmadaamir/project-microservice-frontend:db380bcc085f74bf4ea8b3161760ca3974c5e35d 
+    image: ahmadaamir/project-microservice-frontend:9e8604a75b4675f92cc5161e8232aeb29074f8bf 
     ports:
       - "3000:3000"
     environment:
