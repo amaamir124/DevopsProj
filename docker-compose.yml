@@ -3,7 +3,7 @@ version: '3'
 services:
 
   appointments:
-    image: ahmadaamir/project-microservice-appointments:db380bcc085f74bf4ea8b3161760ca3974c5e35d 
+    image: ahmadaamir/project-microservice-appointments:0020174a95b0e7677e3134f4459a1216a5f87c8f 
     expose:
       - "7070"
     networks:
